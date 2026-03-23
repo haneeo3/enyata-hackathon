@@ -678,10 +678,157 @@ const styles = `
     font-size: 28px; margin-bottom: 20px;
   }
 
+  /* ── MY BRIEFS PAGE ── */
+  .briefs-toolbar {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 0;
+  }
+
+  .briefs-table-wrap {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden; margin-top: 16px;
+  }
+
+  .brief-status-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .brief-status-pill.open { background: var(--purple-light); color: var(--purple-bright); }
+  .brief-status-pill.active { background: #dbeafe; color: #1d4ed8; }
+  .brief-status-pill.completed { background: var(--green-light); color: #15803d; }
+  .brief-status-pill.closed { background: #f3f4f6; color: #6b7280; }
+
+  .brief-action-btn {
+    background: var(--purple-light); color: var(--purple-bright); border: none;
+    border-radius: 20px; padding: 5px 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .brief-action-btn:hover { background: #ddd6fe; }
+
+  /* ── POST A BRIEF PAGE ── */
+  .post-brief-wrap {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 36px 40px; max-width: 860px;
+  }
+
+  .post-brief-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; }
+  .post-brief-label { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+  .post-brief-label span { font-weight: 400; color: var(--text-muted); }
+
+  .post-brief-input {
+    height: 48px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    padding: 0 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-dark);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; background: var(--white);
+    appearance: none; -webkit-appearance: none;
+  }
+
+  .post-brief-input:focus { border-color: var(--purple-bright); box-shadow: 0 0 0 3px rgba(108,60,225,0.1); }
+  .post-brief-input::placeholder { color: #adb5bd; }
+  .post-brief-input.has-error { border-color: var(--red); }
+
+  .post-brief-textarea {
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    padding: 14px 16px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text-dark);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; background: var(--white);
+    resize: vertical; min-height: 120px; line-height: 1.6;
+  }
+
+  .post-brief-textarea:focus { border-color: var(--purple-bright); box-shadow: 0 0 0 3px rgba(108,60,225,0.1); }
+  .post-brief-textarea::placeholder { color: #adb5bd; }
+
+  .post-brief-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .post-brief-select-wrap { position: relative; }
+  .post-brief-select-wrap .post-brief-input { cursor: pointer; padding-right: 36px; }
+  .post-brief-select-arrow { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-muted); }
+
+  .post-brief-ai-note {
+    background: var(--purple-light); border: 1px solid #d8ccff;
+    border-radius: var(--radius-sm); padding: 16px 18px; margin-bottom: 28px;
+  }
+
+  .post-brief-ai-note strong { font-size: 13.5px; color: var(--purple-bright); display: block; margin-bottom: 4px; }
+  .post-brief-ai-note p { font-size: 13px; color: var(--purple-mid); line-height: 1.5; }
+
+  .post-brief-actions { display: flex; gap: 12px; }
+
+  .post-brief-cancel {
+    flex: 1; height: 50px; background: transparent; border: 1.5px solid var(--border);
+    border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+    color: var(--text-muted); cursor: pointer; transition: background 0.2s;
+  }
+
+  .post-brief-cancel:hover { background: var(--bg); }
+
+  .post-brief-submit {
+    flex: 2; height: 50px; background: var(--purple-btn); color: var(--white); border: none;
+    border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700;
+    cursor: pointer; transition: background 0.2s, box-shadow 0.2s; position: relative; overflow: hidden;
+  }
+
+  .post-brief-submit:hover { background: #6a40e0; box-shadow: 0 6px 20px rgba(108,60,225,0.3); }
+
+  .post-brief-success {
+    display: flex; flex-direction: column; align-items: center; text-align: center; padding: 64px 40px;
+  }
+
+  .post-brief-success-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, #6c3ce1, #4e22c4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px; margin-bottom: 24px;
+  }
+
+  /* ── JOB REQUESTS PAGE ── */
+  .jr-stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;
+  }
+
+  .jr-stat-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+    transition: box-shadow 0.2s;
+  }
+
+  .jr-stat-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .jr-stat-label { font-size: 13px; color: var(--text-muted); font-weight: 500; margin-bottom: 8px; }
+  .jr-stat-value { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--text-dark); letter-spacing: -0.5px; }
+
+  .jr-stat-icon {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  .jr-stat-icon.total { background: #eff6ff; }
+  .jr-stat-icon.accepted { background: var(--green-light); }
+  .jr-stat-icon.pending { background: #fff7ed; }
+  .jr-stat-icon.declined { background: #fef2f2; }
+
+  .jr-toolbar {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+  }
+
+  .jr-table-wrap {
+    background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .jr-status-pill { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .jr-status-pill.accepted { background: var(--green-light); color: #15803d; }
+  .jr-status-pill.pending { background: #fff7ed; color: #c2410c; }
+  .jr-status-pill.declined { background: #fef2f2; color: #b91c1c; }
+
+  .jr-view-btn {
+    background: var(--purple-light); color: var(--purple-bright); border: none;
+    border-radius: 20px; padding: 5px 14px; font-family: 'DM Sans', sans-serif;
+    font-size: 12px; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap;
+  }
+
+  .jr-view-btn:hover { background: #ddd6fe; }
+
   @media (max-width: 1100px) {
-    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
-    .bottom-grid { grid-template-columns: 1fr; }
-    .creators-grid { grid-template-columns: repeat(2, 1fr); }
+    .jr-stats-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
@@ -1210,6 +1357,380 @@ function CreatorProfile({ creator, onBack, onSendRequest }) {
   );
 }
 
+/* ── MY BRIEFS DATA ── */
+const initialBriefs = [
+  { id: 1, title: "Product Launch Video", category: "Videographer", budget: "120,000 – 200,000", status: "open", bids: 5, posted: "Mar 15, 2026" },
+  { id: 2, title: "Monthly Social Content", category: "Social Media", budget: "60,000 – 80,000/mo", status: "open", bids: 8, posted: "Mar 12, 2026" },
+  { id: 3, title: "Brand Photography", category: "Photographer", budget: "80,000 – 120,000", status: "active", bids: 3, posted: "Mar 5, 2026" },
+  { id: 4, title: "Website Copywriting", category: "Copywriter", budget: "50,000 – 70,000", status: "completed", bids: 4, posted: "Feb 20, 2026" },
+];
+
+/* ── MY BRIEFS PAGE ── */
+function MyBriefs({ onPostBrief, onBack, briefs }) {
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+
+  const filtered = briefs.filter(b => {
+    const matchSearch = !search || b.title.toLowerCase().includes(search.toLowerCase()) || b.category.toLowerCase().includes(search.toLowerCase());
+    const matchStatus = statusFilter === "all" || b.status === statusFilter;
+    return matchSearch && matchStatus;
+  });
+
+  return (
+    <div className="content">
+      <button className="back-btn" onClick={onBack}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Dashboard
+      </button>
+
+      <div className="briefs-toolbar">
+        <div className="search-wrap" style={{ flex: 1 }}>
+          <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input className="search-input" placeholder="Search job briefs..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
+        <div className="filter-wrap">
+          <select className="filter-select" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+            <option value="all">All Status</option>
+            <option value="open">Open</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="closed">Closed</option>
+          </select>
+          <svg className="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <button className="post-btn" onClick={onPostBrief} style={{ borderRadius: "50px", whiteSpace: "nowrap" }}>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Post a Brief
+        </button>
+      </div>
+
+      <div className="briefs-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Brief Title</th>
+              <th>Category</th>
+              <th>Budget</th>
+              <th>Status</th>
+              <th>Bids</th>
+              <th>Posted</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.length === 0 ? (
+              <tr><td colSpan={7} style={{ textAlign: "center", color: "var(--text-muted)", padding: "40px" }}>No briefs found</td></tr>
+            ) : filtered.map((b) => (
+              <tr key={b.id}>
+                <td style={{ fontWeight: 600 }}>{b.title}</td>
+                <td style={{ color: "var(--text-muted)" }}>{b.category}</td>
+                <td style={{ fontFamily: "monospace", fontSize: 13 }}>{b.budget}</td>
+                <td>
+                  <span className={`brief-status-pill ${b.status}`}>
+                    {b.status.charAt(0).toUpperCase() + b.status.slice(1)}
+                  </span>
+                </td>
+                <td style={{ fontWeight: 600, color: "var(--text-dark)" }}>{b.bids}</td>
+                <td style={{ color: "var(--text-muted)" }}>{b.posted}</td>
+                <td>
+                  <button className="brief-action-btn">
+                    {b.status === "open" ? "View Bids" : "View"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+/* ── POST A BRIEF PAGE ── */
+function PostBrief({ onBack, onSuccess }) {
+  const [form, setForm] = useState({
+    title: "", category: "", description: "",
+    minBudget: "", maxBudget: "",
+    startDate: "", endDate: "",
+    projectType: "one-time", location: "remote",
+  });
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const set = (field) => (e) => {
+    setForm({ ...form, [field]: e.target.value });
+    setErrors({ ...errors, [field]: "" });
+  };
+
+  const validate = () => {
+    const e = {};
+    if (!form.title.trim()) e.title = "Brief title is required";
+    if (!form.category) e.category = "Select a category";
+    if (!form.description.trim()) e.description = "Please describe the project";
+    if (!form.minBudget || isNaN(parseFloat(form.minBudget))) e.minBudget = "Enter a valid amount";
+    if (!form.maxBudget || isNaN(parseFloat(form.maxBudget))) e.maxBudget = "Enter a valid amount";
+    return e;
+  };
+
+  const handleSubmit = (e) => {
+    const errs = validate();
+    if (Object.keys(errs).length) { setErrors(errs); return; }
+    createRipple(e);
+    setTimeout(() => setSubmitted(true), 300);
+  };
+
+  if (submitted) {
+    return (
+      <div className="content">
+        <div className="post-brief-wrap">
+          <div className="post-brief-success">
+            <div className="post-brief-success-icon">✦</div>
+            <h3 className="result-title">Brief Posted!</h3>
+            <p className="result-sub" style={{ marginBottom: 28 }}>
+              Your brief <strong>"{form.title}"</strong> is now live. Our AI is already matching it with relevant creators — you'll start receiving bids within hours.
+            </p>
+            <button className="result-btn" style={{ maxWidth: 320 }} onClick={() => onSuccess(form)}>View My Briefs</button>
+            <button className="result-btn-outline" style={{ maxWidth: 320, marginTop: 10 }} onClick={onBack}>Back to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="content">
+      <button className="back-btn" onClick={onBack}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Briefs
+      </button>
+
+      <div className="post-brief-wrap">
+        <div className="post-brief-field">
+          <label className="post-brief-label">Brief Title</label>
+          <input className={`post-brief-input ${errors.title ? "has-error" : ""}`} placeholder="e.g Product Launch Video Q2 2026" value={form.title} onChange={set("title")} />
+          {errors.title && <span className="field-error">⚠ {errors.title}</span>}
+        </div>
+
+        <div className="post-brief-field">
+          <label className="post-brief-label">Creator Category Needed</label>
+          <div className="post-brief-select-wrap">
+            <select className={`post-brief-input ${errors.category ? "has-error" : ""}`} value={form.category} onChange={set("category")}>
+              <option value="">Select category</option>
+              <option value="Videographer">Videographer</option>
+              <option value="Photographer">Photographer</option>
+              <option value="Social Media Manager">Social Media Manager</option>
+              <option value="Copywriter">Copywriter</option>
+              <option value="Graphic Designer">Graphic Designer</option>
+              <option value="Animator">Animator</option>
+              <option value="Content Creator">Content Creator</option>
+            </select>
+            <svg className="post-brief-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          {errors.category && <span className="field-error">⚠ {errors.category}</span>}
+        </div>
+
+        <div className="post-brief-field">
+          <label className="post-brief-label">Brief Description</label>
+          <textarea
+            className={`post-brief-textarea ${errors.description ? "has-error" : ""}`}
+            placeholder="Describe the project. Include deliverables, style references, platform, audience, etc"
+            value={form.description}
+            onChange={set("description")}
+          />
+          {errors.description && <span className="field-error">⚠ {errors.description}</span>}
+        </div>
+
+        <div className="post-brief-two-col">
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">Minimum Budget (₦)</label>
+            <input className={`post-brief-input ${errors.minBudget ? "has-error" : ""}`} placeholder="e.g ₦80,000" value={form.minBudget} onChange={set("minBudget")} />
+            {errors.minBudget && <span className="field-error">⚠ {errors.minBudget}</span>}
+          </div>
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">Maximum Budget (₦)</label>
+            <input className={`post-brief-input ${errors.maxBudget ? "has-error" : ""}`} placeholder="e.g ₦150,000" value={form.maxBudget} onChange={set("maxBudget")} />
+            {errors.maxBudget && <span className="field-error">⚠ {errors.maxBudget}</span>}
+          </div>
+        </div>
+
+        <div className="post-brief-two-col" style={{ marginTop: 22 }}>
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">Start Date</label>
+            <input className="post-brief-input" type="date" value={form.startDate} onChange={set("startDate")} />
+          </div>
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">End Date</label>
+            <input className="post-brief-input" type="date" value={form.endDate} onChange={set("endDate")} />
+          </div>
+        </div>
+
+        <div className="post-brief-two-col" style={{ marginTop: 22, marginBottom: 24 }}>
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">Project Type</label>
+            <div className="post-brief-select-wrap">
+              <select className="post-brief-input" value={form.projectType} onChange={set("projectType")}>
+                <option value="one-time">One-time Project</option>
+                <option value="recurring">Recurring / Retainer</option>
+                <option value="ongoing">Ongoing</option>
+              </select>
+              <svg className="post-brief-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div className="post-brief-field" style={{ marginBottom: 0 }}>
+            <label className="post-brief-label">Location Preference</label>
+            <div className="post-brief-select-wrap">
+              <select className="post-brief-input" value={form.location} onChange={set("location")}>
+                <option value="remote">Remote</option>
+                <option value="lagos">Lagos</option>
+                <option value="abuja">Abuja</option>
+                <option value="ph">Port Harcourt</option>
+                <option value="any">Any Location</option>
+              </select>
+              <svg className="post-brief-select-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="post-brief-ai-note">
+          <strong>After posting</strong>
+          <p>Our AI will immediately match your brief with relevant creators. You'll start receiving bids within hours.</p>
+        </div>
+
+        <div className="post-brief-actions">
+          <button className="post-brief-cancel" onClick={onBack}>Cancel</button>
+          <button className="post-brief-submit" onClick={handleSubmit}>Post Brief</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ── JOB REQUESTS DATA ── */
+const jobRequestsData = [
+  { id: 1, creator: "Amara Okon", project: "Product Launch Video", amount: "₦120,000", status: "accepted", date: "Mar 15, 2026" },
+  { id: 2, creator: "Chidi Eze", project: "Brand Photography", amount: "₦85,000", status: "accepted", date: "Mar 10, 2026" },
+  { id: 3, creator: "Funmi Adeyemi", project: "Monthly Social Content", amount: "₦60,000", status: "pending", date: "Mar 12, 2026" },
+  { id: 4, creator: "Kola Mensah", project: "Website Copywriting", amount: "₦50,000", status: "pending", date: "Mar 8, 2026" },
+  { id: 5, creator: "Adaeze Nwosu", project: "Product Launch Video", amount: "₦150,000", status: "declined", date: "Mar 6, 2026" },
+  { id: 6, creator: "Taiwo James", project: "Brand Animation", amount: "₦90,000", status: "accepted", date: "Mar 3, 2026" },
+  { id: 7, creator: "Amara Okon", project: "Q2 Social Media Pack", amount: "₦75,000", status: "declined", date: "Feb 28, 2026" },
+  { id: 8, creator: "Kola Mensah", project: "Email Campaign Copy", amount: "₦35,000", status: "pending", date: "Feb 25, 2026" },
+  { id: 9, creator: "Chidi Eze", project: "Event Photography", amount: "₦65,000", status: "pending", date: "Feb 20, 2026" },
+];
+
+/* ── JOB REQUESTS PAGE ── */
+function JobRequests() {
+  const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+
+  const filtered = jobRequestsData.filter(r => {
+    const matchSearch = !search ||
+      r.creator.toLowerCase().includes(search.toLowerCase()) ||
+      r.project.toLowerCase().includes(search.toLowerCase());
+    const matchStatus = statusFilter === "all" || r.status === statusFilter;
+    return matchSearch && matchStatus;
+  });
+
+  const total = jobRequestsData.length;
+  const accepted = jobRequestsData.filter(r => r.status === "accepted").length;
+  const pending = jobRequestsData.filter(r => r.status === "pending").length;
+  const declined = jobRequestsData.filter(r => r.status === "declined").length;
+
+  return (
+    <div className="content">
+      <div className="jr-stats-grid">
+        <div className="jr-stat-card">
+          <div>
+            <div className="jr-stat-label">Total Sent</div>
+            <div className="jr-stat-value">{total}</div>
+          </div>
+          <div className="jr-stat-icon total">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div className="jr-stat-card">
+          <div>
+            <div className="jr-stat-label">Accepted</div>
+            <div className="jr-stat-value">{accepted}</div>
+          </div>
+          <div className="jr-stat-icon accepted">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+        </div>
+        <div className="jr-stat-card">
+          <div>
+            <div className="jr-stat-label">Pending</div>
+            <div className="jr-stat-value">{pending}</div>
+          </div>
+          <div className="jr-stat-icon pending">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+        </div>
+        <div className="jr-stat-card">
+          <div>
+            <div className="jr-stat-label">Declined</div>
+            <div className="jr-stat-value">{declined}</div>
+          </div>
+          <div className="jr-stat-icon declined">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div className="jr-toolbar">
+        <div className="search-wrap" style={{ flex: 1 }}>
+          <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input className="search-input" placeholder="Search job requests..." value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
+        <div className="filter-wrap">
+          <select className="filter-select" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+            <option value="all">All Status</option>
+            <option value="accepted">Accepted</option>
+            <option value="pending">Pending</option>
+            <option value="declined">Declined</option>
+          </select>
+          <svg className="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+
+      <div className="jr-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Creator</th>
+              <th>Project</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th style={{ textAlign: "center" }}>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.length === 0 ? (
+              <tr><td colSpan={6} style={{ textAlign: "center", color: "var(--text-muted)", padding: "40px" }}>No requests found</td></tr>
+            ) : filtered.map((r) => (
+              <tr key={r.id}>
+                <td style={{ fontWeight: 600 }}>{r.creator}</td>
+                <td style={{ color: "var(--text-muted)" }}>{r.project}</td>
+                <td style={{ fontWeight: 600 }}>{r.amount}</td>
+                <td>
+                  <span className={`jr-status-pill ${r.status}`}>
+                    {r.status.charAt(0).toUpperCase() + r.status.slice(1)}
+                  </span>
+                </td>
+                <td style={{ color: "var(--text-muted)" }}>{r.date}</td>
+                <td style={{ textAlign: "center" }}>
+                  <button className="jr-view-btn">View Details</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 /* ── SIDEBAR ── */
 function Sidebar({ currentPage, onNavigate, menuOpen, setMenuOpen, accountOpen, setAccountOpen }) {
   const navItems = [
@@ -1268,6 +1789,21 @@ export default function App() {
   const [jobRequestCreator, setJobRequestCreator] = useState(null);
   const [menuOpen, setMenuOpen] = useState(true);
   const [accountOpen, setAccountOpen] = useState(true);
+  const [briefs, setBriefs] = useState(initialBriefs);
+
+  const handleBriefPosted = (form) => {
+    const newBrief = {
+      id: briefs.length + 1,
+      title: form.title,
+      category: form.category,
+      budget: `${Number(form.minBudget).toLocaleString()} – ${Number(form.maxBudget).toLocaleString()}`,
+      status: "open",
+      bids: 0,
+      posted: new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }),
+    };
+    setBriefs([newBrief, ...briefs]);
+    setPage("briefs");
+  };
 
   const getHour = () => {
     const h = new Date().getHours();
@@ -1290,7 +1826,9 @@ export default function App() {
     dashboard: { title: "Dashboard", subtitle: "Overview of your creator activity, projects, and payments" },
     browse: { title: "Browse Creators", subtitle: "Discover and connect with vetted creators across Nigeria" },
     profile: { title: selectedCreator?.name || "Creator Profile", subtitle: `${selectedCreator?.role || ""} · ${selectedCreator?.location || ""}` },
-    jobs: { title: "Job Requests", subtitle: "Manage requests sent to creators" },
+    briefs: { title: "My Briefs", subtitle: "All job briefs you have posted" },
+    "post-brief": { title: "Post a New Brief", subtitle: "Tell creators what you need. Be as specific as possible for better matches." },
+    jobs: { title: "Job Requests", subtitle: "Track requests sent to creators and their responses" },
     messages: { title: "Messages", subtitle: "Your conversations with creators" },
     notifications: { title: "Notifications", subtitle: "Stay updated on your projects" },
     transactions: { title: "Transaction History", subtitle: "All your payment records" },
@@ -1340,7 +1878,7 @@ export default function App() {
                   <h2>Good {getHour()}, Emeka 👋</h2>
                   <p>Here's your business activity at a glance</p>
                 </div>
-                <button className="post-btn" onClick={createRipple}>
+                <button className="post-btn" onClick={(e) => { createRipple(e); setPage("briefs"); }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                   Post a Brief
                 </button>
@@ -1435,6 +1973,23 @@ export default function App() {
             </div>
           )}
 
+          {/* MY BRIEFS */}
+          {page === "briefs" && (
+            <MyBriefs
+              briefs={briefs}
+              onPostBrief={() => setPage("post-brief")}
+              onBack={() => setPage("dashboard")}
+            />
+          )}
+
+          {/* POST A BRIEF */}
+          {page === "post-brief" && (
+            <PostBrief
+              onBack={() => setPage("briefs")}
+              onSuccess={handleBriefPosted}
+            />
+          )}
+
           {/* BROWSE CREATORS */}
           {page === "browse" && (
             <BrowseCreators
@@ -1452,8 +2007,11 @@ export default function App() {
             />
           )}
 
+          {/* JOB REQUESTS */}
+          {page === "jobs" && <JobRequests />}
+
           {/* PLACEHOLDER PAGES */}
-          {["jobs", "messages", "notifications", "transactions"].includes(page) && (
+          {["messages", "notifications", "transactions"].includes(page) && (
             <div className="content">
               <div style={{ background: "var(--white)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "60px 40px", textAlign: "center" }}>
                 <div style={{ fontSize: 40, marginBottom: 16 }}>🚧</div>
