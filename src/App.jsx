@@ -1,7 +1,7 @@
-import BusinessSignup from './pages/BusinessSignup'
+import BusinessSignupStepOne from './pages/BusinessSignupStepOne'
 
 function App() {
-  return <BusinessSignup />
+  return <BusinessSignupStepOne />
 }
 
 export default App
