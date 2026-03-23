@@ -1,5 +1,4 @@
 import { useState } from "react";
-import BusinessSignup from "./BusinessSignup";
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
@@ -425,7 +424,6 @@ export default function BusinessSignupStepOne({ onNext }) {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [goToNext, setGoToNext] = useState(false);
 
   const strength = getStrength(form.password);
 
@@ -470,18 +468,18 @@ export default function BusinessSignupStepOne({ onNext }) {
     btn.appendChild(circle);
   };
 
-  const handleSubmit = (e) => {
-    const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-    createRipple(e);
-    setTimeout(() => setGoToNext(true), 300);
-  };
-
-  if (goToNext) return <BusinessSignup />;
-
+  
+const handleSubmit = (e) => {
+  const newErrors = validate();
+  if (Object.keys(newErrors).length > 0) {
+    setErrors(newErrors);
+    return;
+  }
+  setErrors({});
+  createRipple(e);
+  setTimeout(() => onNext(), 300);
+};
+  
   return (
     <>
       <style>{styles}</style>

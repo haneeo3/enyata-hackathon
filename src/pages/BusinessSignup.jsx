@@ -392,8 +392,7 @@ const styles = `
   }
 `;
 
-export default function BusinessSignup() {
-  const [form, setForm] = useState({
+export default function BusinessSignup({ onNext }) {  const [form, setForm] = useState({
     address: "",
     website: "",
     creatorType: "",
@@ -606,7 +605,7 @@ export default function BusinessSignup() {
             <p className="success-sub">
               Your Vynder business account is ready. You can now start finding creators that fit your brand.
             </p>
-            <button className="success-btn" onClick={() => setSuccess(false)}>
+            <button className="success-btn" onClick={onNext}>
               Go to Dashboard
             </button>
           </div>
