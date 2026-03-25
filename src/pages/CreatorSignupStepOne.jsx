@@ -6,11 +6,8 @@ const styles = `
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --purple-deep: #3a1a8a;
-    --purple-mid: #4e22c4;
     --purple-bright: #6c3ce1;
     --purple-btn: #7b4ff0;
-    --green-dot: #22c55e;
     --text-dark: #111118;
     --text-muted: #6b7280;
     --border: #e2e4ea;
@@ -29,7 +26,6 @@ const styles = `
     font-family: 'DM Sans', sans-serif;
   }
 
-  /* LEFT PANEL */
   .left-panel {
     width: 42%;
     background: linear-gradient(145deg, #2a0f7a 0%, #4e22c4 50%, #3a1a8a 100%);
@@ -78,7 +74,6 @@ const styles = `
 
   .brand-badge {
     background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.2);
     color: var(--white);
     font-size: 11px;
@@ -128,13 +123,12 @@ const styles = `
   .left-cta:hover { background: rgba(255,255,255,0.2); }
   .left-cta:active { transform: scale(0.96); }
 
-  /* RIGHT PANEL */
   .right-panel {
     flex: 1;
     background: var(--bg-form);
     display: flex;
     flex-direction: column;
-    padding: 28px 48px 24px;
+    padding: 36px 52px 28px;
     overflow-y: auto;
     height: 100vh;
   }
@@ -146,7 +140,7 @@ const styles = `
     font-size: 13px;
     color: var(--text-muted);
     cursor: pointer;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
     transition: color 0.2s;
     user-select: none;
     width: fit-content;
@@ -154,12 +148,11 @@ const styles = `
 
   .back-link:hover { color: var(--text-dark); }
 
-  /* STEPPER */
   .stepper {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .step-pill {
@@ -168,9 +161,7 @@ const styles = `
     background: var(--purple-bright);
   }
 
-  .step-pill.inactive {
-    background: #d1d5db;
-  }
+  .step-pill.inactive { background: #d1d5db; }
 
   .form-title {
     font-family: 'Syne', sans-serif;
@@ -184,12 +175,18 @@ const styles = `
   .form-step-label {
     font-size: 12px;
     color: var(--text-muted);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
-  .form { display: flex; flex-direction: column; gap: 14px; }
+  .form { display: flex; flex-direction: column; gap: 16px; }
 
-  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
 
   label {
     font-size: 12.5px;
@@ -197,8 +194,8 @@ const styles = `
     color: var(--text-dark);
   }
 
-  input, select {
-    height: 42px;
+  input {
+    height: 44px;
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     background: var(--input-bg);
@@ -208,19 +205,17 @@ const styles = `
     color: var(--text-dark);
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
-    appearance: none;
-    -webkit-appearance: none;
     width: 100%;
   }
 
   input::placeholder { color: #adb5bd; }
 
-  input:focus, select:focus {
+  input:focus {
     border-color: var(--purple-bright);
     box-shadow: 0 0 0 3px rgba(108, 60, 225, 0.12);
   }
 
-  input.error, select.error {
+  input.error {
     border-color: var(--red);
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
   }
@@ -231,19 +226,10 @@ const styles = `
     margin-top: 1px;
   }
 
-  .select-wrap { position: relative; }
-  .select-wrap select { cursor: pointer; padding-right: 36px; }
-  .select-arrow {
-    position: absolute;
-    right: 12px; top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: var(--text-muted);
-  }
-
   /* PASSWORD */
   .input-wrap { position: relative; }
   .input-wrap input { padding-right: 44px; }
+
   .eye-btn {
     position: absolute;
     right: 13px; top: 50%;
@@ -257,69 +243,9 @@ const styles = `
     padding: 0;
     transition: color 0.2s;
   }
+
   .eye-btn:hover { color: var(--purple-bright); }
 
-  /* PASSWORD STRENGTH */
-  .strength-bar {
-    display: flex;
-    gap: 4px;
-    margin-top: 6px;
-  }
-
-  .strength-segment {
-    height: 3px;
-    flex: 1;
-    border-radius: 4px;
-    background: #e5e7eb;
-    transition: background 0.3s;
-  }
-
-  .strength-segment.weak   { background: #ef4444; }
-  .strength-segment.fair   { background: #f97316; }
-  .strength-segment.good   { background: #eab308; }
-  .strength-segment.strong { background: #22c55e; }
-
-  .strength-label {
-    font-size: 11px;
-    margin-top: 3px;
-    font-weight: 500;
-  }
-
-  .strength-label.weak   { color: #ef4444; }
-  .strength-label.fair   { color: #f97316; }
-  .strength-label.good   { color: #eab308; }
-  .strength-label.strong { color: #22c55e; }
-
-  /* PASSWORD RULES */
-  .pwd-rules {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-top: 6px;
-  }
-
-  .pwd-rule {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11.5px;
-    color: var(--text-muted);
-    transition: color 0.2s;
-  }
-
-  .pwd-rule.met { color: #22c55e; }
-
-  .pwd-rule-dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #d1d5db;
-    transition: background 0.2s;
-    flex-shrink: 0;
-  }
-
-  .pwd-rule.met .pwd-rule-dot { background: #22c55e; }
-
-  /* SUBMIT */
   .submit-btn {
     height: 46px;
     background: var(--purple-btn);
@@ -333,7 +259,7 @@ const styles = `
     position: relative;
     overflow: hidden;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    margin-top: 2px;
+    margin-top: 4px;
   }
 
   .submit-btn:hover {
@@ -358,7 +284,7 @@ const styles = `
     text-align: center;
     font-size: 13px;
     color: var(--text-muted);
-    margin-top: 10px;
+    margin-top: 12px;
     padding-bottom: 4px;
   }
 
@@ -371,16 +297,11 @@ const styles = `
 
   .signin-row a:hover { text-decoration: underline; }
 
-  /* RESPONSIVE */
   @media (max-width: 860px) {
     .page { flex-direction: column; height: auto; overflow: visible; }
     .left-panel { width: 100%; padding: 40px 28px; min-height: auto; }
     .right-panel { padding: 28px 24px; height: auto; }
-  }
-
-  @media (max-width: 480px) {
-    .left-panel { padding: 36px 18px; }
-    .right-panel { padding: 24px 16px; }
+    .field-row { grid-template-columns: 1fr; }
   }
 `;
 
@@ -397,44 +318,16 @@ const EyeIcon = ({ open }) => open ? (
   </svg>
 );
 
-function getStrength(pwd) {
-  if (!pwd) return { score: 0, label: "", level: "" };
-  let score = 0;
-  if (pwd.length >= 8) score++;
-  if (/[A-Z]/.test(pwd)) score++;
-  if (/[0-9]/.test(pwd)) score++;
-  if (/[^A-Za-z0-9]/.test(pwd)) score++;
-  const map = {
-    1: { label: "Weak", level: "weak" },
-    2: { label: "Fair", level: "fair" },
-    3: { label: "Good", level: "good" },
-    4: { label: "Strong", level: "strong" }
-  };
-  return { score, ...(map[score] || { label: "", level: "" }) };
-}
-
-export default function BusinessSignupStepOne({ onNext }) {
+export default function CreatorSignupStepOne({ onNext }) {
   const [form, setForm] = useState({
-    companyName: "",
-    industry: "",
-    businessSize: "",
-    workEmail: "",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
-
-  const strength = getStrength(form.password);
-
-  const rules = [
-    { label: "At least 8 characters", met: form.password.length >= 8 },
-    { label: "One uppercase letter", met: /[A-Z]/.test(form.password) },
-    { label: "One number", met: /[0-9]/.test(form.password) },
-    { label: "One special character", met: /[^A-Za-z0-9]/.test(form.password) },
-  ];
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -443,15 +336,12 @@ export default function BusinessSignupStepOne({ onNext }) {
 
   const validate = () => {
     const e = {};
-    if (!form.companyName.trim()) e.companyName = "Company name is required";
-    if (!form.industry) e.industry = "Please select an industry";
-    if (!form.businessSize) e.businessSize = "Please select a business size";
-    if (!form.workEmail.trim()) e.workEmail = "Work email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.workEmail)) e.workEmail = "Enter a valid email address";
+    if (!form.firstName.trim()) e.firstName = "First name is required";
+    if (!form.lastName.trim()) e.lastName = "Last name is required";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email address";
     if (!form.password) e.password = "Password is required";
     else if (form.password.length < 8) e.password = "Password must be at least 8 characters";
-    if (!form.confirmPassword) e.confirmPassword = "Please confirm your password";
-    else if (form.password !== form.confirmPassword) e.confirmPassword = "Passwords do not match";
     return e;
   };
 
@@ -472,10 +362,7 @@ export default function BusinessSignupStepOne({ onNext }) {
 
   const handleSubmit = (e) => {
     const newErrors = validate();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
     setErrors({});
     createRipple(e);
     setTimeout(() => onNext(), 300);
@@ -486,20 +373,18 @@ export default function BusinessSignupStepOne({ onNext }) {
       <style>{styles}</style>
       <div className="page">
 
-        {/* LEFT */}
         <div className="left-panel">
           <div className="brand-row">
             <span className="brand-name">vynder</span>
-            <span className="brand-badge">Business</span>
+            <span className="brand-badge">Creators</span>
           </div>
-          <h1 className="left-headline">Start finding creators that fit.</h1>
+          <h1 className="left-headline">Start getting matched today.</h1>
           <p className="left-sub">
-            Join hundreds of businesses already using Vynder to hire and pay creators — without the friction.
+            Join thousands of creators and businesses already using Vynder to find the right fit.
           </p>
-          <button className="left-cta">Free to create an account</button>
+          <button className="left-cta">Free to join</button>
         </div>
 
-        {/* RIGHT */}
         <div className="right-panel">
           <div className="back-link">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -513,79 +398,46 @@ export default function BusinessSignupStepOne({ onNext }) {
             <div className="step-pill inactive" />
           </div>
 
-          <h2 className="form-title">Create Business Account</h2>
-          <p className="form-step-label">Step 1 of 2 — Business Info</p>
+          <h2 className="form-title">Create Account</h2>
+          <p className="form-step-label">Step 1 of 2 — Basic Info</p>
 
           <div className="form">
-
-            <div className="field">
-              <label>Business / Company Name</label>
-              <input
-                name="companyName"
-                placeholder="e.g. TechCorp Nigeria Ltd"
-                value={form.companyName}
-                onChange={handleChange}
-                className={errors.companyName ? "error" : ""}
-              />
-              {errors.companyName && <span className="error-msg">⚠ {errors.companyName}</span>}
-            </div>
-
-            <div className="field">
-              <label>Industry</label>
-              <div className="select-wrap">
-                <select name="industry" value={form.industry} onChange={handleChange} className={errors.industry ? "error" : ""}>
-                  <option value="" disabled>Select Industry</option>
-                  <option>Technology</option>
-                  <option>Fashion & Apparel</option>
-                  <option>Food & Beverage</option>
-                  <option>Finance & Fintech</option>
-                  <option>Health & Wellness</option>
-                  <option>Education</option>
-                  <option>Real Estate</option>
-                  <option>Entertainment & Media</option>
-                  <option>E-commerce & Retail</option>
-                  <option>Beauty & Personal Care</option>
-                  <option>Travel & Hospitality</option>
-                  <option>Non-profit / NGO</option>
-                  <option>Other</option>
-                </select>
-                <svg className="select-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+            <div className="field-row">
+              <div className="field">
+                <label>Your First Name</label>
+                <input
+                  name="firstName"
+                  placeholder="Amara"
+                  value={form.firstName}
+                  onChange={handleChange}
+                  className={errors.firstName ? "error" : ""}
+                />
+                {errors.firstName && <span className="error-msg">⚠ {errors.firstName}</span>}
               </div>
-              {errors.industry && <span className="error-msg">⚠ {errors.industry}</span>}
-            </div>
-
-            <div className="field">
-              <label>Business Size</label>
-              <div className="select-wrap">
-                <select name="businessSize" value={form.businessSize} onChange={handleChange} className={errors.businessSize ? "error" : ""}>
-                  <option value="" disabled>Select size</option>
-                  <option>Solo / Freelancer</option>
-                  <option>2 — 10 employees</option>
-                  <option>11 — 50 employees</option>
-                  <option>51 — 200 employees</option>
-                  <option>201 — 500 employees</option>
-                  <option>500+ employees</option>
-                </select>
-                <svg className="select-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+              <div className="field">
+                <label>Your Last Name</label>
+                <input
+                  name="lastName"
+                  placeholder="Okon"
+                  value={form.lastName}
+                  onChange={handleChange}
+                  className={errors.lastName ? "error" : ""}
+                />
+                {errors.lastName && <span className="error-msg">⚠ {errors.lastName}</span>}
               </div>
-              {errors.businessSize && <span className="error-msg">⚠ {errors.businessSize}</span>}
             </div>
 
             <div className="field">
-              <label>Work Email</label>
+              <label>Email</label>
               <input
-                name="workEmail"
+                name="email"
                 type="email"
-                placeholder="you@company.com"
-                value={form.workEmail}
+                placeholder="you@example.com"
+                value={form.email}
                 onChange={handleChange}
-                className={errors.workEmail ? "error" : ""}
+                className={errors.email ? "error" : ""}
               />
-              {errors.workEmail && <span className="error-msg">⚠ {errors.workEmail}</span>}
+              {errors.email && <span className="error-msg">⚠ {errors.email}</span>}
             </div>
 
             <div className="field">
@@ -604,49 +456,6 @@ export default function BusinessSignupStepOne({ onNext }) {
                 </button>
               </div>
               {errors.password && <span className="error-msg">⚠ {errors.password}</span>}
-
-              {form.password && (
-                <>
-                  <div className="strength-bar">
-                    {[1,2,3,4].map(i => (
-                      <div
-                        key={i}
-                        className={`strength-segment ${i <= strength.score ? strength.level : ""}`}
-                      />
-                    ))}
-                  </div>
-                  <span className={`strength-label ${strength.level}`}>{strength.label} password</span>
-                  <div className="pwd-rules">
-                    {rules.map((r, i) => (
-                      <div key={i} className={`pwd-rule ${r.met ? "met" : ""}`}>
-                        <div className="pwd-rule-dot" />
-                        {r.label}
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div className="field">
-              <label>Confirm Password</label>
-              <div className="input-wrap">
-                <input
-                  name="confirmPassword"
-                  type={showConfirm ? "text" : "password"}
-                  placeholder="Re-enter your password"
-                  value={form.confirmPassword}
-                  onChange={handleChange}
-                  className={errors.confirmPassword ? "error" : ""}
-                />
-                <button className="eye-btn" type="button" onClick={() => setShowConfirm(!showConfirm)}>
-                  <EyeIcon open={showConfirm} />
-                </button>
-              </div>
-              {errors.confirmPassword && <span className="error-msg">⚠ {errors.confirmPassword}</span>}
-              {!errors.confirmPassword && form.confirmPassword && form.password === form.confirmPassword && (
-                <span style={{ fontSize: "11.5px", color: "#22c55e", marginTop: "1px" }}>✓ Passwords match</span>
-              )}
             </div>
 
             <button className="submit-btn" onClick={handleSubmit}>
